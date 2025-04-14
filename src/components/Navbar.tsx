@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
@@ -8,7 +7,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   return (
     <nav className="bg-white border-b border-gray-200 sticky top-0 z-30">
@@ -17,7 +16,9 @@ const Navbar = () => {
           <div className="flex">
             <div className="flex-shrink-0 flex items-center">
               <Link to="/" className="flex items-center">
-                <span className="text-education-primary text-xl font-bold">Education</span>
+                <span className="text-education-primary text-xl font-bold">
+                  {language === 'arabic' ? 'الشامل في التعليم' : 'Education'}
+                </span>
               </Link>
             </div>
             <div className="hidden sm:ml-6 sm:flex sm:space-x-8">

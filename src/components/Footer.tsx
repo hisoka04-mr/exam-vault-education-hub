@@ -1,17 +1,23 @@
-
 import { Facebook, Twitter, Instagram, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Footer = () => {
+  const { language } = useLanguage();
+
   return (
     <footer className="bg-gray-50 border-t border-gray-200">
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
           <div className="space-y-8 xl:col-span-1">
             <div>
-              <h3 className="text-education-primary text-2xl font-bold">Education</h3>
+              <h3 className="text-education-primary text-2xl font-bold">
+                {language === 'arabic' ? 'الشامل في التعليم' : 'Education'}
+              </h3>
               <p className="text-gray-500 mt-2 text-sm">
-                Your trusted resource for educational materials.
+                {language === 'arabic' 
+                  ? 'مصدرك الموثوق للمواد التعليمية.' 
+                  : 'Your trusted resource for educational materials.'}
               </p>
             </div>
             <div className="flex space-x-6">
