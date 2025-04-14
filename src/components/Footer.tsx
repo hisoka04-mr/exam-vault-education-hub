@@ -46,11 +46,6 @@ const Footer = () => {
                       Categories
                     </Link>
                   </li>
-                  <li>
-                    <Link to="/about" className="text-base text-gray-600 hover:text-gray-800">
-                      About
-                    </Link>
-                  </li>
                 </ul>
               </div>
               <div className="mt-12 md:mt-0">
