@@ -44,6 +44,20 @@ export const categories: Category[] = [
     slug: "foreign-language"
   },
   {
+    id: "arabic-language",
+    name: "Arabic",
+    icon: "Flag",
+    description: "Arabic language courses, grammar, vocabulary, and conversational practice",
+    slug: "arabic-language"
+  },
+  {
+    id: "french-language",
+    name: "French",
+    icon: "Flag",
+    description: "French language courses, grammar, vocabulary, and conversational practice",
+    slug: "french-language"
+  },
+  {
     id: "computer-science",
     name: "Computer Science",
     icon: "Code",
