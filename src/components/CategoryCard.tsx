@@ -16,8 +16,8 @@ const CategoryCard = ({ category }: CategoryCardProps) => {
     <Link to={`/categories/${category.slug}`}>
       <Card className="h-full transition-all hover:shadow-md hover:border-education-primary">
         <CardHeader className="flex flex-row items-center gap-2 pb-2">
-          <div className="p-2 rounded-full bg-education-light text-education-primary">
-            <IconComponent size={24} />
+          <div className="p-3 rounded-full bg-education-light text-education-primary">
+            <IconComponent size={28} />
           </div>
           <h3 className="text-lg font-medium">{category.name}</h3>
         </CardHeader>
