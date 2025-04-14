@@ -3,9 +3,12 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import LanguageSelector from "./LanguageSelector";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { t } = useLanguage();
 
   return (
     <nav className="bg-white border-b border-gray-200 sticky top-0 z-30">
@@ -22,21 +25,24 @@ const Navbar = () => {
                 to="/"
                 className="border-transparent text-gray-500 hover:text-gray-800 inline-flex items-center px-1 pt-1 border-b-2"
               >
-                Home
+                {t('home')}
               </Link>
               <Link
                 to="/categories"
                 className="border-transparent text-gray-500 hover:text-gray-800 inline-flex items-center px-1 pt-1 border-b-2"
               >
-                Categories
+                {t('categories')}
               </Link>
             </div>
           </div>
           <div className="hidden sm:ml-6 sm:flex sm:items-center">
-            <Button variant="outline" className="mr-2">
-              Sign In
+            <LanguageSelector />
+            <Button variant="outline" className="mx-2">
+              {t('signIn')}
             </Button>
-            <Button>Create Account</Button>
+            <Button>
+              {t('createAccount')}
+            </Button>
           </div>
           <div className="-mr-2 flex items-center sm:hidden">
             <Button
@@ -59,22 +65,25 @@ const Navbar = () => {
               className="block pl-3 pr-4 py-2 text-base font-medium hover:bg-gray-50"
               onClick={() => setIsOpen(false)}
             >
-              Home
+              {t('home')}
             </Link>
             <Link
               to="/categories"
               className="block pl-3 pr-4 py-2 text-base font-medium hover:bg-gray-50"
               onClick={() => setIsOpen(false)}
             >
-              Categories
+              {t('categories')}
             </Link>
           </div>
           <div className="pt-4 pb-3 border-t border-gray-200">
             <div className="flex items-center px-4 space-x-2">
+              <LanguageSelector />
               <Button variant="outline" className="w-full">
-                Sign In
+                {t('signIn')}
               </Button>
-              <Button className="w-full">Create Account</Button>
+              <Button className="w-full">
+                {t('createAccount')}
+              </Button>
             </div>
           </div>
         </div>
