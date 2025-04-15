@@ -23,25 +23,32 @@ export const categories: Category[] = [
     slug: "science"
   },
   {
-    id: "language-arts",
-    name: "Language Arts",
+    id: "english",
+    name: "English",
     icon: "BookOpen",
-    description: "Reading, Writing, Grammar, and Literature",
-    slug: "language-arts"
+    description: "English language courses, grammar, vocabulary, and literature",
+    slug: "english"
   },
   {
-    id: "social-studies",
-    name: "Social Studies",
+    id: "geography",
+    name: "Geography",
     icon: "Globe",
-    description: "History, Geography, Civics, and Economics",
-    slug: "social-studies"
+    description: "World geography, physical geography, and cartography",
+    slug: "geography"
   },
   {
-    id: "foreign-language",
-    name: "Foreign Language",
-    icon: "Languages",
-    description: "Spanish, French, German, Chinese, and more",
-    slug: "foreign-language"
+    id: "history",
+    name: "History",
+    icon: "History",
+    description: "World history, ancient civilizations, and modern history",
+    slug: "history"
+  },
+  {
+    id: "technology",
+    name: "Technology",
+    icon: "Cpu",
+    description: "Computer technology, programming, and digital literacy",
+    slug: "technology"
   },
   {
     id: "arabic-language",
