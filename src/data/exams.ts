@@ -11,6 +11,7 @@ export interface Exam {
 }
 
 export const exams: Exam[] = [
+  // Mathematics exams
   {
     id: "math-algebra-midterm",
     title: "Algebra I Midterm",
@@ -31,6 +32,8 @@ export const exams: Exam[] = [
     downloadUrl: "#",
     dateAdded: "2025-03-10"
   },
+  
+  // Science exams
   {
     id: "science-chemistry-periodic",
     title: "Chemistry Periodic Table Quiz",
@@ -51,6 +54,8 @@ export const exams: Exam[] = [
     downloadUrl: "#",
     dateAdded: "2025-03-05"
   },
+  
+  // English exams
   {
     id: "english-grammar",
     title: "English Grammar Assessment",
@@ -71,6 +76,8 @@ export const exams: Exam[] = [
     downloadUrl: "#",
     dateAdded: "2025-03-18"
   },
+  
+  // History exams
   {
     id: "history-world",
     title: "World History Midterm",
@@ -81,6 +88,8 @@ export const exams: Exam[] = [
     downloadUrl: "#",
     dateAdded: "2025-03-12"
   },
+  
+  // Geography exams
   {
     id: "geography-skills",
     title: "Geography Skills Quiz",
@@ -91,6 +100,8 @@ export const exams: Exam[] = [
     downloadUrl: "#",
     dateAdded: "2025-03-25"
   },
+  
+  // Arabic language exams
   {
     id: "arabic-exam",
     title: "Arabic Language Exam",
@@ -101,6 +112,8 @@ export const exams: Exam[] = [
     downloadUrl: "#",
     dateAdded: "2025-03-08"
   },
+  
+  // Technology exams
   {
     id: "technology-programming",
     title: "Technology Assessment",
@@ -110,6 +123,92 @@ export const exams: Exam[] = [
     fileSize: "1.7 MB",
     downloadUrl: "#",
     dateAdded: "2025-03-17"
+  },
+  
+  // Class-specific exams - Primary School
+  {
+    id: "primary-1-arabic-midterm",
+    title: "Arabic Midterm Exam",
+    description: "Basic Arabic language skills assessment for beginners",
+    categoryId: "primary-1",
+    fileType: "PDF",
+    fileSize: "1.1 MB",
+    downloadUrl: "#",
+    dateAdded: "2025-03-10"
+  },
+  {
+    id: "primary-1-math-quiz",
+    title: "Basic Mathematics Quiz",
+    description: "Simple arithmetic and number recognition quiz",
+    categoryId: "primary-1",
+    fileType: "PDF",
+    fileSize: "0.8 MB",
+    downloadUrl: "#",
+    dateAdded: "2025-03-14"
+  },
+  {
+    id: "primary-3-french",
+    title: "French Introduction Test",
+    description: "First year French vocabulary and basic phrases test",
+    categoryId: "primary-3",
+    fileType: "PDF",
+    fileSize: "1.3 MB",
+    downloadUrl: "#",
+    dateAdded: "2025-03-21"
+  },
+  
+  // Middle School exams
+  {
+    id: "middle-8-physics",
+    title: "Physics Principles Exam",
+    description: "Assessment on fundamental physics concepts and simple experiments",
+    categoryId: "middle-8",
+    fileType: "PDF",
+    fileSize: "2.1 MB",
+    downloadUrl: "#",
+    dateAdded: "2025-03-19"
+  },
+  {
+    id: "middle-9-math",
+    title: "Advanced Algebra Test",
+    description: "Comprehensive algebra and geometry assessment for 9th graders",
+    categoryId: "middle-9",
+    fileType: "PDF",
+    fileSize: "2.4 MB",
+    downloadUrl: "#",
+    dateAdded: "2025-03-16"
+  },
+  
+  // High School exams
+  {
+    id: "high-2-chemistry",
+    title: "Chemistry Final Exam",
+    description: "Advanced chemistry concepts and laboratory procedures assessment",
+    categoryId: "high-2",
+    fileType: "PDF",
+    fileSize: "3.2 MB",
+    downloadUrl: "#",
+    dateAdded: "2025-03-09"
+  },
+  {
+    id: "bac-arabic",
+    title: "BAC Arabic Language Exam",
+    description: "Official-style BAC Arabic language assessment",
+    categoryId: "bac",
+    fileType: "PDF",
+    fileSize: "2.9 MB",
+    downloadUrl: "#",
+    dateAdded: "2025-03-07"
+  },
+  {
+    id: "bac-math",
+    title: "BAC Mathematics Sample Exam",
+    description: "Practice exam for BAC mathematics with complete solutions",
+    categoryId: "bac",
+    fileType: "PDF",
+    fileSize: "3.5 MB",
+    downloadUrl: "#",
+    dateAdded: "2025-03-11"
   }
 ];
 

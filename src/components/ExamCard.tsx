@@ -10,13 +10,13 @@ interface ExamCardProps {
 
 const ExamCard = ({ exam }: ExamCardProps) => {
   return (
-    <Card className="h-full flex flex-col">
+    <Card className="h-full flex flex-col dark:bg-gray-900 dark:border-gray-800">
       <CardHeader className="pb-2">
-        <h3 className="text-lg font-medium">{exam.title}</h3>
+        <h3 className="text-lg font-medium dark:text-white">{exam.title}</h3>
       </CardHeader>
       <CardContent className="flex-grow">
-        <p className="text-gray-600 text-sm">{exam.description}</p>
-        <div className="mt-3 grid grid-cols-2 gap-2 text-xs text-gray-500">
+        <p className="text-gray-600 text-sm dark:text-gray-300">{exam.description}</p>
+        <div className="mt-3 grid grid-cols-2 gap-2 text-xs text-gray-500 dark:text-gray-400">
           <div>
             <span className="font-medium">Format:</span> {exam.fileType}
           </div>
