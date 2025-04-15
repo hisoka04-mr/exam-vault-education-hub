@@ -11,6 +11,8 @@ import Home from "./pages/Home";
 import Index from "./pages/Index";
 import Categories from "./pages/Categories";
 import CategoryDetail from "./pages/CategoryDetail";
+import Classes from "./pages/Classes";
+import ClassDetail from "./pages/ClassDetail";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -31,6 +33,8 @@ const App = () => (
                 <Route path="/index" element={<Index />} />
                 <Route path="/categories" element={<Categories />} />
                 <Route path="/categories/:slug" element={<CategoryDetail />} />
+                <Route path="/classes" element={<Classes />} />
+                <Route path="/classes/:slug" element={<ClassDetail />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </main>

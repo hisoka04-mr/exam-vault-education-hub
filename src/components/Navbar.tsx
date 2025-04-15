@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
@@ -33,6 +34,12 @@ const Navbar = () => {
                 className="border-transparent text-gray-500 hover:text-gray-800 inline-flex items-center px-1 pt-1 border-b-2"
               >
                 {t('categories')}
+              </Link>
+              <Link
+                to="/classes"
+                className="border-transparent text-gray-500 hover:text-gray-800 inline-flex items-center px-1 pt-1 border-b-2"
+              >
+                {t('classes')}
               </Link>
             </div>
           </div>
@@ -74,6 +81,13 @@ const Navbar = () => {
               onClick={() => setIsOpen(false)}
             >
               {t('categories')}
+            </Link>
+            <Link
+              to="/classes"
+              className="block pl-3 pr-4 py-2 text-base font-medium hover:bg-gray-50"
+              onClick={() => setIsOpen(false)}
+            >
+              {t('classes')}
             </Link>
           </div>
           <div className="pt-4 pb-3 border-t border-gray-200">
