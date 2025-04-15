@@ -5,19 +5,20 @@ import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import LanguageSelector from "./LanguageSelector";
 import { useLanguage } from "@/contexts/LanguageContext";
+import DarkModeToggle from "./DarkModeToggle";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { t, language } = useLanguage();
 
   return (
-    <nav className="bg-white border-b border-gray-200 sticky top-0 z-30">
+    <nav className="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 sticky top-0 z-30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex">
             <div className="flex-shrink-0 flex items-center">
               <Link to="/" className="flex items-center">
-                <span className="text-education-primary text-xl font-bold">
+                <span className="text-education-primary dark:text-blue-400 text-xl font-bold">
                   {language === 'arabic' ? 'الشامل في التعليم' : 'Education'}
                 </span>
               </Link>
@@ -25,30 +26,31 @@ const Navbar = () => {
             <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
               <Link
                 to="/"
-                className="border-transparent text-gray-500 hover:text-gray-800 inline-flex items-center px-1 pt-1 border-b-2"
+                className="border-transparent text-gray-500 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white inline-flex items-center px-1 pt-1 border-b-2"
               >
                 {t('home')}
               </Link>
               <Link
                 to="/categories"
-                className="border-transparent text-gray-500 hover:text-gray-800 inline-flex items-center px-1 pt-1 border-b-2"
+                className="border-transparent text-gray-500 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white inline-flex items-center px-1 pt-1 border-b-2"
               >
                 {t('categories')}
               </Link>
               <Link
                 to="/classes"
-                className="border-transparent text-gray-500 hover:text-gray-800 inline-flex items-center px-1 pt-1 border-b-2"
+                className="border-transparent text-gray-500 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white inline-flex items-center px-1 pt-1 border-b-2"
               >
                 {t('classes')}
               </Link>
             </div>
           </div>
-          <div className="hidden sm:ml-6 sm:flex sm:items-center">
+          <div className="hidden sm:ml-6 sm:flex sm:items-center space-x-2">
+            <DarkModeToggle />
             <LanguageSelector />
-            <Button variant="outline" className="mx-2">
+            <Button variant="outline" className="mx-2 dark:border-gray-700 dark:text-gray-300">
               {t('signIn')}
             </Button>
-            <Button>
+            <Button className="dark:bg-blue-600 dark:hover:bg-blue-700">
               {t('createAccount')}
             </Button>
           </div>
@@ -56,7 +58,7 @@ const Navbar = () => {
             <Button
               variant="ghost"
               onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500"
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 dark:text-gray-200 hover:text-gray-500 dark:hover:text-gray-100"
             >
               <span className="sr-only">Open main menu</span>
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -66,37 +68,38 @@ const Navbar = () => {
       </div>
 
       {isOpen && (
-        <div className="sm:hidden">
+        <div className="sm:hidden bg-white dark:bg-gray-900">
           <div className="pt-2 pb-3 space-y-1">
             <Link
               to="/"
-              className="block pl-3 pr-4 py-2 text-base font-medium hover:bg-gray-50"
+              className="block pl-3 pr-4 py-2 text-base font-medium hover:bg-gray-50 dark:hover:bg-gray-800 dark:text-gray-300"
               onClick={() => setIsOpen(false)}
             >
               {t('home')}
             </Link>
             <Link
               to="/categories"
-              className="block pl-3 pr-4 py-2 text-base font-medium hover:bg-gray-50"
+              className="block pl-3 pr-4 py-2 text-base font-medium hover:bg-gray-50 dark:hover:bg-gray-800 dark:text-gray-300"
               onClick={() => setIsOpen(false)}
             >
               {t('categories')}
             </Link>
             <Link
               to="/classes"
-              className="block pl-3 pr-4 py-2 text-base font-medium hover:bg-gray-50"
+              className="block pl-3 pr-4 py-2 text-base font-medium hover:bg-gray-50 dark:hover:bg-gray-800 dark:text-gray-300"
               onClick={() => setIsOpen(false)}
             >
               {t('classes')}
             </Link>
           </div>
-          <div className="pt-4 pb-3 border-t border-gray-200">
+          <div className="pt-4 pb-3 border-t border-gray-200 dark:border-gray-700">
             <div className="flex items-center px-4 space-x-2">
+              <DarkModeToggle />
               <LanguageSelector />
-              <Button variant="outline" className="w-full">
+              <Button variant="outline" className="w-full dark:border-gray-700 dark:text-gray-300">
                 {t('signIn')}
               </Button>
-              <Button className="w-full">
+              <Button className="w-full dark:bg-blue-600 dark:hover:bg-blue-700">
                 {t('createAccount')}
               </Button>
             </div>

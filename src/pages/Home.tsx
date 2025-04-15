@@ -9,16 +9,16 @@ const Home = () => {
   const { t } = useLanguage();
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white dark:bg-gray-950">
       <HeroSection />
       
-      <div className="py-12 bg-white">
+      <div className="py-12 bg-white dark:bg-gray-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
+            <h2 className="text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl">
               {t('exploreCategories')}
             </h2>
-            <p className="mt-4 text-lg text-gray-600">
+            <p className="mt-4 text-lg text-gray-600 dark:text-gray-400">
               {t('findResources')}
             </p>
           </div>
@@ -30,7 +30,7 @@ const Home = () => {
           <div className="mt-10 text-center">
             <Link 
               to="/categories"
-              className="inline-flex items-center text-education-primary hover:text-education-dark font-medium"
+              className="inline-flex items-center text-education-primary dark:text-blue-400 hover:text-education-dark dark:hover:text-blue-500 font-medium"
             >
               {t('viewAllCategories')} <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
