@@ -19,7 +19,7 @@ export const exams: Exam[] = [
     categoryId: "mathematics",
     fileType: "PDF",
     fileSize: "2.3 MB",
-    downloadUrl: "#",
+    downloadUrl: "https://example.com/exams/algebra_midterm.pdf", // Update with real URLs when available
     dateAdded: "2025-03-15"
   },
   {
@@ -29,7 +29,7 @@ export const exams: Exam[] = [
     categoryId: "mathematics",
     fileType: "PDF",
     fileSize: "3.1 MB",
-    downloadUrl: "#",
+    downloadUrl: "https://example.com/exams/calculus_final.pdf",
     dateAdded: "2025-03-10"
   },
   
@@ -41,7 +41,7 @@ export const exams: Exam[] = [
     categoryId: "science",
     fileType: "PDF",
     fileSize: "1.5 MB",
-    downloadUrl: "#",
+    downloadUrl: "https://example.com/exams/chemistry_periodic.pdf",
     dateAdded: "2025-03-20"
   },
   {
@@ -51,7 +51,7 @@ export const exams: Exam[] = [
     categoryId: "science",
     fileType: "PDF",
     fileSize: "2.8 MB",
-    downloadUrl: "#",
+    downloadUrl: "https://example.com/exams/biology_cells.pdf",
     dateAdded: "2025-03-05"
   },
   
@@ -63,7 +63,7 @@ export const exams: Exam[] = [
     categoryId: "english",
     fileType: "DOCX",
     fileSize: "1.2 MB",
-    downloadUrl: "#",
+    downloadUrl: "https://example.com/exams/english_grammar.docx",
     dateAdded: "2025-03-22"
   },
   {
@@ -73,7 +73,7 @@ export const exams: Exam[] = [
     categoryId: "english",
     fileType: "PDF",
     fileSize: "2.5 MB",
-    downloadUrl: "#",
+    downloadUrl: "https://example.com/exams/english_literature.pdf",
     dateAdded: "2025-03-18"
   },
   
@@ -85,7 +85,7 @@ export const exams: Exam[] = [
     categoryId: "history",
     fileType: "PDF",
     fileSize: "3.0 MB",
-    downloadUrl: "#",
+    downloadUrl: "https://example.com/exams/history_world.pdf",
     dateAdded: "2025-03-12"
   },
   
@@ -97,7 +97,7 @@ export const exams: Exam[] = [
     categoryId: "geography",
     fileType: "PDF",
     fileSize: "1.8 MB",
-    downloadUrl: "#",
+    downloadUrl: "https://example.com/exams/geography_skills.pdf",
     dateAdded: "2025-03-25"
   },
   
@@ -109,7 +109,7 @@ export const exams: Exam[] = [
     categoryId: "arabic-language",
     fileType: "PDF",
     fileSize: "2.2 MB",
-    downloadUrl: "#",
+    downloadUrl: "https://example.com/exams/arabic_language.pdf",
     dateAdded: "2025-03-08"
   },
   
@@ -121,7 +121,7 @@ export const exams: Exam[] = [
     categoryId: "technology",
     fileType: "PDF",
     fileSize: "1.7 MB",
-    downloadUrl: "#",
+    downloadUrl: "https://example.com/exams/technology_programming.pdf",
     dateAdded: "2025-03-17"
   },
   
@@ -133,7 +133,7 @@ export const exams: Exam[] = [
     categoryId: "primary-1",
     fileType: "PDF",
     fileSize: "1.1 MB",
-    downloadUrl: "#",
+    downloadUrl: "https://example.com/exams/primary_1_arabic.pdf",
     dateAdded: "2025-03-10"
   },
   {
@@ -143,7 +143,7 @@ export const exams: Exam[] = [
     categoryId: "primary-1",
     fileType: "PDF",
     fileSize: "0.8 MB",
-    downloadUrl: "#",
+    downloadUrl: "https://example.com/exams/primary_1_math.pdf",
     dateAdded: "2025-03-14"
   },
   {
@@ -153,7 +153,7 @@ export const exams: Exam[] = [
     categoryId: "primary-3",
     fileType: "PDF",
     fileSize: "1.3 MB",
-    downloadUrl: "#",
+    downloadUrl: "https://example.com/exams/primary_3_french.pdf",
     dateAdded: "2025-03-21"
   },
   
@@ -165,7 +165,7 @@ export const exams: Exam[] = [
     categoryId: "middle-8",
     fileType: "PDF",
     fileSize: "2.1 MB",
-    downloadUrl: "#",
+    downloadUrl: "https://example.com/exams/middle_8_physics.pdf",
     dateAdded: "2025-03-19"
   },
   {
@@ -175,7 +175,7 @@ export const exams: Exam[] = [
     categoryId: "middle-9",
     fileType: "PDF",
     fileSize: "2.4 MB",
-    downloadUrl: "#",
+    downloadUrl: "https://example.com/exams/middle_9_math.pdf",
     dateAdded: "2025-03-16"
   },
   
@@ -187,7 +187,7 @@ export const exams: Exam[] = [
     categoryId: "high-2",
     fileType: "PDF",
     fileSize: "3.2 MB",
-    downloadUrl: "#",
+    downloadUrl: "https://example.com/exams/high_2_chemistry.pdf",
     dateAdded: "2025-03-09"
   },
   {
@@ -197,7 +197,7 @@ export const exams: Exam[] = [
     categoryId: "bac",
     fileType: "PDF",
     fileSize: "2.9 MB",
-    downloadUrl: "#",
+    downloadUrl: "https://example.com/exams/bac_arabic.pdf",
     dateAdded: "2025-03-07"
   },
   {
@@ -207,7 +207,7 @@ export const exams: Exam[] = [
     categoryId: "bac",
     fileType: "PDF",
     fileSize: "3.5 MB",
-    downloadUrl: "#",
+    downloadUrl: "https://example.com/exams/bac_math.pdf",
     dateAdded: "2025-03-11"
   }
 ];
