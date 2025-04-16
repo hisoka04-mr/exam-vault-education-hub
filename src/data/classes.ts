@@ -1,4 +1,3 @@
-
 export interface Subject {
   id: string;
   name: string;
@@ -233,57 +232,7 @@ export const classes: SchoolClass[] = [
       }
     ]
   },
-  {
-    id: "primary-7",
-    name: "7 école primaire",
-    level: "primary",
-    slug: "7-ecole-primaire",
-    subjects: [
-      {
-        id: "arabic-primary-7",
-        name: "Arabic",
-        description: "Comprehensive Arabic studies and literature",
-        slug: "arabic-primary-7",
-        icon: "BookText"
-      },
-      {
-        id: "french-primary-7",
-        name: "French",
-        description: "Advanced French language skills",
-        slug: "french-primary-7",
-        icon: "Languages"
-      },
-      {
-        id: "english-primary-7",
-        name: "English",
-        description: "Introduction to English language",
-        slug: "english-primary-7",
-        icon: "Languages"
-      },
-      {
-        id: "math-primary-7",
-        name: "Mathematics",
-        description: "Preparation for middle school mathematics",
-        slug: "math-primary-7",
-        icon: "Calculator"
-      },
-      {
-        id: "science-primary-7",
-        name: "Science",
-        description: "Comprehensive science studies",
-        slug: "science-primary-7",
-        icon: "FlaskConical"
-      },
-      {
-        id: "history-primary-7",
-        name: "History & Geography",
-        description: "Expanded studies of history and geography",
-        slug: "history-primary-7",
-        icon: "Globe"
-      }
-    ]
-  },
-
+  
   // Middle School
   {
     id: "middle-7",

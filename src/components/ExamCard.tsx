@@ -1,6 +1,6 @@
 
 import { Download } from "lucide-react";
-import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
+import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Exam } from "@/data/exams";
 import { useState } from "react";
@@ -55,32 +55,23 @@ const ExamCard = ({ exam }: ExamCardProps) => {
   };
 
   return (
-    <Card className="h-full flex flex-col dark:bg-gray-900 dark:border-gray-800">
-      <CardHeader className="pb-2">
-        <h3 className="text-lg font-medium dark:text-white">{exam.title}</h3>
-      </CardHeader>
-      <CardContent className="flex-grow">
-        <p className="text-gray-600 text-sm dark:text-gray-300">{exam.description}</p>
-        <div className="mt-3 grid grid-cols-2 gap-2 text-xs text-gray-500 dark:text-gray-400">
-          <div>
-            <span className="font-medium">Format:</span> {exam.fileType}
-          </div>
-          <div>
-            <span className="font-medium">Size:</span> {exam.fileSize}
-          </div>
-          <div className="col-span-2">
-            <span className="font-medium">Added:</span> {new Date(exam.dateAdded).toLocaleDateString()}
-          </div>
+    <Card className="bg-gray-50 border border-gray-200">
+      <CardContent className="p-3">
+        <h4 className="font-medium text-sm">{exam.title}</h4>
+        <div className="flex justify-between items-center mt-2 text-xs text-gray-500">
+          <span>{exam.fileType} • {exam.fileSize}</span>
+          <span>{new Date(exam.dateAdded).toLocaleDateString()}</span>
         </div>
       </CardContent>
-      <CardFooter>
+      <CardFooter className="p-2 pt-0">
         <Button 
           className="w-full" 
           size="sm" 
+          variant="outline"
           onClick={handleDownload}
           disabled={isDownloading}
         >
-          <Download size={16} className={`mr-2 ${isDownloading ? 'animate-pulse' : ''}`} /> 
+          <Download size={14} className={`mr-2 ${isDownloading ? 'animate-pulse' : ''}`} /> 
           {isDownloading ? 'Downloading...' : 'Download'}
         </Button>
       </CardFooter>
