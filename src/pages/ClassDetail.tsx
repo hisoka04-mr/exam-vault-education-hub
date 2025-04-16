@@ -1,4 +1,3 @@
-
 import { useParams, Link } from "react-router-dom";
 import { ArrowLeft, BookOpen, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -68,24 +67,24 @@ const ClassDetail = () => {
     : [];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-12">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-12 dark:from-gray-900 dark:to-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-8">
           <Link 
             to="/classes" 
-            className="inline-flex items-center text-education-primary hover:underline mb-6"
+            className="inline-flex items-center text-education-primary hover:underline mb-6 dark:text-blue-400"
           >
             <ArrowLeft className="h-4 w-4 mr-2" />
             {t("backToClasses") || "Back to Classes"}
           </Link>
           
-          <div className="flex items-center space-x-4 mb-2 bg-white/60 backdrop-blur-md rounded-lg p-4 shadow-md">
-            <div className="p-3 rounded-full bg-education-light text-education-primary">
+          <div className="flex items-center space-x-4 mb-2 bg-white/60 dark:bg-gray-800/50 backdrop-blur-md rounded-lg p-4 shadow-md">
+            <div className="p-3 rounded-full bg-education-light dark:bg-gray-700 text-education-primary dark:text-blue-400">
               <LevelIcon className="h-8 w-8" />
             </div>
             <div>
-              <h1 className="text-3xl font-bold text-gray-900">{schoolClass.name}</h1>
-              <Badge variant="outline" className="mt-2">
+              <h1 className="text-3xl font-bold text-gray-900 dark:text-white">{schoolClass.name}</h1>
+              <Badge variant="outline" className="mt-2 dark:bg-gray-700 dark:text-gray-300">
                 {schoolClass.level === "primary" && (t("primarySchool") || "Primary School")}
                 {schoolClass.level === "middle" && (t("middleSchool") || "Middle School")}
                 {schoolClass.level === "high" && (t("highSchool") || "High School")}
@@ -99,7 +98,7 @@ const ClassDetail = () => {
             <Button 
               variant="outline" 
               onClick={() => setSelectedSubject(null)} 
-              className="mb-6 bg-white/60 backdrop-blur-md"
+              className="mb-6 bg-white/60 dark:bg-gray-800/50 backdrop-blur-md"
             >
               <ArrowLeft className="h-4 w-4 mr-2" />
               Back to all subjects
@@ -107,7 +106,7 @@ const ClassDetail = () => {
             
             {currentSubject && (
               <>
-                <div className="flex items-center gap-3 mb-4 bg-white/60 backdrop-blur-md rounded-lg p-4 shadow-md">
+                <div className="flex items-center gap-3 mb-4 bg-white/60 dark:bg-gray-800/50 backdrop-blur-md rounded-lg p-4 shadow-md">
                   <div className="p-2 rounded-full bg-education-light text-education-primary">
                     {(() => {
                       const IconComponent = (LucideIcons as any)[currentSubject.icon] || LucideIcons.BookText;
@@ -117,7 +116,7 @@ const ClassDetail = () => {
                   <h2 className="text-2xl font-semibold">{currentSubject.name}</h2>
                 </div>
                 
-                <p className="text-gray-600 mb-6 bg-white/60 backdrop-blur-md rounded-lg p-4 shadow-md">{currentSubject.description}</p>
+                <p className="text-gray-600 mb-6 bg-white/60 dark:bg-gray-800/50 backdrop-blur-md rounded-lg p-4 shadow-md">{currentSubject.description}</p>
                 
                 {subjectExams.length > 0 ? (
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -126,7 +125,7 @@ const ClassDetail = () => {
                     ))}
                   </div>
                 ) : (
-                  <div className="text-center py-16 bg-white/60 backdrop-blur-md rounded-lg shadow-md">
+                  <div className="text-center py-16 bg-white/60 dark:bg-gray-800/50 backdrop-blur-md rounded-lg shadow-md">
                     <FileText className="mx-auto h-12 w-12 text-gray-400" />
                     <h3 className="mt-4 text-lg font-medium text-gray-900">No exams available</h3>
                     <p className="mt-2 text-sm text-gray-500">
@@ -139,7 +138,7 @@ const ClassDetail = () => {
           </div>
         ) : (
           <div>
-            <h2 className="text-xl font-semibold mb-6">{t("availableSubjects") || "Available Subjects"}</h2>
+            <h2 className="text-xl font-semibold mb-6 dark:text-white">{t("availableSubjects") || "Available Subjects"}</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {schoolClass.subjects.map((subject) => {
                 const IconComponent = (LucideIcons as any)[subject.icon] || LucideIcons.BookText;
@@ -152,7 +151,7 @@ const ClassDetail = () => {
                 return (
                   <Card 
                     key={subject.id} 
-                    className="overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer bg-white/70 backdrop-blur-md"
+                    className="overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer bg-white/70 dark:bg-gray-800/50 backdrop-blur-md"
                     onClick={() => handleSubjectClick(subject.id)}
                   >
                     <CardHeader className="pb-2">
