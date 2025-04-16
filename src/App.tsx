@@ -13,6 +13,7 @@ import Categories from "./pages/Categories";
 import CategoryDetail from "./pages/CategoryDetail";
 import Classes from "./pages/Classes";
 import ClassDetail from "./pages/ClassDetail";
+import Admin from "./pages/Admin";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -35,6 +36,7 @@ const App = () => (
                 <Route path="/categories/:slug" element={<CategoryDetail />} />
                 <Route path="/classes" element={<Classes />} />
                 <Route path="/classes/:slug" element={<ClassDetail />} />
+                <Route path="/admin" element={<Admin />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </main>
