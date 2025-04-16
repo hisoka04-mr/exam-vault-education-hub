@@ -1,6 +1,6 @@
 
 import { useParams, Link } from "react-router-dom";
-import { ArrowLeft, BookOpen } from "lucide-react";
+import { ArrowLeft, BookOpen, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { classes } from "@/data/classes";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
@@ -9,9 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import * as LucideIcons from "lucide-react";
 import ExamCard from "@/components/ExamCard";
 import { getExamsByCategory } from "@/data/exams";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useState } from "react";
-import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@/components/ui/collapsible";
 
 const ClassDetail = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -70,15 +68,18 @@ const ClassDetail = () => {
     : [];
 
   return (
-    <div className="min-h-screen bg-white py-12">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-8">
-          <Link to="/classes" className="inline-flex items-center text-education-primary hover:underline mb-6">
+          <Link 
+            to="/classes" 
+            className="inline-flex items-center text-education-primary hover:underline mb-6"
+          >
             <ArrowLeft className="h-4 w-4 mr-2" />
             {t("backToClasses") || "Back to Classes"}
           </Link>
           
-          <div className="flex items-center space-x-4 mb-2">
+          <div className="flex items-center space-x-4 mb-2 bg-white/60 backdrop-blur-md rounded-lg p-4 shadow-md">
             <div className="p-3 rounded-full bg-education-light text-education-primary">
               <LevelIcon className="h-8 w-8" />
             </div>
@@ -98,7 +99,7 @@ const ClassDetail = () => {
             <Button 
               variant="outline" 
               onClick={() => setSelectedSubject(null)} 
-              className="mb-6"
+              className="mb-6 bg-white/60 backdrop-blur-md"
             >
               <ArrowLeft className="h-4 w-4 mr-2" />
               Back to all subjects
@@ -106,7 +107,7 @@ const ClassDetail = () => {
             
             {currentSubject && (
               <>
-                <div className="flex items-center gap-3 mb-4">
+                <div className="flex items-center gap-3 mb-4 bg-white/60 backdrop-blur-md rounded-lg p-4 shadow-md">
                   <div className="p-2 rounded-full bg-education-light text-education-primary">
                     {(() => {
                       const IconComponent = (LucideIcons as any)[currentSubject.icon] || LucideIcons.BookText;
@@ -116,7 +117,7 @@ const ClassDetail = () => {
                   <h2 className="text-2xl font-semibold">{currentSubject.name}</h2>
                 </div>
                 
-                <p className="text-gray-600 mb-6">{currentSubject.description}</p>
+                <p className="text-gray-600 mb-6 bg-white/60 backdrop-blur-md rounded-lg p-4 shadow-md">{currentSubject.description}</p>
                 
                 {subjectExams.length > 0 ? (
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -125,7 +126,7 @@ const ClassDetail = () => {
                     ))}
                   </div>
                 ) : (
-                  <div className="text-center py-16 bg-gray-50 rounded-lg">
+                  <div className="text-center py-16 bg-white/60 backdrop-blur-md rounded-lg shadow-md">
                     <FileText className="mx-auto h-12 w-12 text-gray-400" />
                     <h3 className="mt-4 text-lg font-medium text-gray-900">No exams available</h3>
                     <p className="mt-2 text-sm text-gray-500">
@@ -151,7 +152,7 @@ const ClassDetail = () => {
                 return (
                   <Card 
                     key={subject.id} 
-                    className="overflow-hidden hover:shadow-md transition-shadow duration-300 cursor-pointer"
+                    className="overflow-hidden hover:shadow-lg transition-all duration-300 cursor-pointer bg-white/70 backdrop-blur-md"
                     onClick={() => handleSubjectClick(subject.id)}
                   >
                     <CardHeader className="pb-2">
