@@ -1,3 +1,4 @@
+
 import { useParams, Link } from "react-router-dom";
 import { ArrowLeft, BookOpen, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -82,8 +83,15 @@ const ClassDetail = () => {
             <div className="p-3 rounded-full bg-education-light dark:bg-gray-700 text-education-primary dark:text-blue-400">
               <LevelIcon className="h-8 w-8" />
             </div>
-            <div>
-              <h1 className="text-3xl font-bold text-gray-900 dark:text-white">{schoolClass.name}</h1>
+            <div className="flex-1">
+              <div className="flex items-center gap-2">
+                <h1 className="text-3xl font-bold text-gray-900 dark:text-white">{schoolClass.name}</h1>
+                {schoolClass.specialization && (
+                  <Badge className="text-sm bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-100">
+                    {schoolClass.specialization}
+                  </Badge>
+                )}
+              </div>
               <Badge variant="outline" className="mt-2 dark:bg-gray-700 dark:text-gray-300">
                 {schoolClass.level === "primary" && (t("primarySchool") || "Primary School")}
                 {schoolClass.level === "middle" && (t("middleSchool") || "Middle School")}

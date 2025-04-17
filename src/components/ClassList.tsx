@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Card, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import { classes } from "@/data/classes";
 import { useLanguage } from "@/contexts/LanguageContext";
 import * as LucideIcons from "lucide-react";
@@ -19,15 +20,18 @@ const ClassList = () => {
   const highClasses = classes.filter(c => c.level === "high");
 
   const filteredPrimaryClasses = primaryClasses.filter(c => 
-    c.name.toLowerCase().includes(searchTerm.toLowerCase())
+    c.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    (c.specialization && c.specialization.toLowerCase().includes(searchTerm.toLowerCase()))
   );
   
   const filteredMiddleClasses = middleClasses.filter(c => 
-    c.name.toLowerCase().includes(searchTerm.toLowerCase())
+    c.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    (c.specialization && c.specialization.toLowerCase().includes(searchTerm.toLowerCase()))
   );
   
   const filteredHighClasses = highClasses.filter(c => 
-    c.name.toLowerCase().includes(searchTerm.toLowerCase())
+    c.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    (c.specialization && c.specialization.toLowerCase().includes(searchTerm.toLowerCase()))
   );
 
   const renderClassCard = (schoolClass) => (
@@ -40,6 +44,11 @@ const ClassList = () => {
             {schoolClass.level === "high" && <GraduationCap className="h-5 w-5 text-purple-500" />}
             <CardTitle className="text-lg">{schoolClass.name}</CardTitle>
           </div>
+          {schoolClass.specialization && (
+            <Badge variant="secondary" className="mt-1">
+              {schoolClass.specialization}
+            </Badge>
+          )}
           <div className="mt-2 text-xs text-gray-500">
             {schoolClass.subjects.length} {schoolClass.subjects.length === 1 ? "subject" : "subjects"}
           </div>

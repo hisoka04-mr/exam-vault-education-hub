@@ -12,6 +12,7 @@ export interface SchoolClass {
   level: "primary" | "middle" | "high";
   subjects: Subject[];
   slug: string;
+  specialization?: string;
 }
 
 export const classes: SchoolClass[] = [
@@ -485,210 +486,557 @@ export const classes: SchoolClass[] = [
       }
     ]
   },
+  
+  // 2ème Année - Économie et Gestion
   {
-    id: "high-2",
-    name: "2ère année",
+    id: "high-2-eco",
+    name: "2ème Année",
     level: "high",
-    slug: "2ere-annee",
+    specialization: "Économie et Gestion",
+    slug: "2eme-annee-economie",
     subjects: [
       {
-        id: "arabic-high-2",
-        name: "Arabic",
-        description: "Literary criticism and advanced composition",
-        slug: "arabic-high-2",
-        icon: "BookText"
-      },
-      {
-        id: "french-high-2",
-        name: "French",
-        description: "Advanced French linguistics and literature",
-        slug: "french-high-2",
-        icon: "Languages"
-      },
-      {
-        id: "english-high-2",
-        name: "English",
-        description: "Advanced English composition and literary analysis",
-        slug: "english-high-2",
-        icon: "Languages"
-      },
-      {
-        id: "math-high-2",
-        name: "Mathematics",
-        description: "Calculus, analytical geometry, and statistics",
-        slug: "math-high-2",
+        id: "math-2-eco",
+        name: "Mathématiques",
+        description: "Mathématiques appliquées à l'économie et la gestion",
+        slug: "math-2-eco",
         icon: "Calculator"
       },
       {
-        id: "biology-high-2",
-        name: "Biology",
-        description: "Genetics, evolution, and human physiology",
-        slug: "biology-high-2",
-        icon: "Leaf"
+        id: "eco-general-2",
+        name: "Économie Générale",
+        description: "Principes fondamentaux de l'économie",
+        slug: "eco-general-2",
+        icon: "LineChart"
       },
       {
-        id: "physics-high-2",
-        name: "Physics",
-        description: "Electricity, magnetism, and modern physics",
-        slug: "physics-high-2",
-        icon: "Atoms"
+        id: "gestion-2",
+        name: "Gestion",
+        description: "Principes de base de la gestion d'entreprise",
+        slug: "gestion-2",
+        icon: "Briefcase"
       },
       {
-        id: "chemistry-high-2",
-        name: "Chemistry",
-        description: "Analytical chemistry and biochemistry",
-        slug: "chemistry-high-2",
-        icon: "FlaskConical"
+        id: "info-base-2",
+        name: "Informatique de base",
+        description: "Compétences informatiques fondamentales pour la gestion",
+        slug: "info-base-2",
+        icon: "Computer"
       },
       {
-        id: "history-high-2",
-        name: "History & Geography",
-        description: "Global geopolitics and modern international relations",
-        slug: "history-high-2",
-        icon: "Globe"
+        id: "francais-2-eco",
+        name: "Français",
+        description: "Langue française appliquée au contexte professionnel",
+        slug: "francais-2-eco",
+        icon: "Languages"
       },
       {
-        id: "philosophy-high-2",
-        name: "Philosophy",
-        description: "Ethics, epistemology, and metaphysics",
-        slug: "philosophy-high-2",
-        icon: "BrainCircuit"
+        id: "anglais-2-eco",
+        name: "Anglais",
+        description: "Anglais des affaires et communication professionnelle",
+        slug: "anglais-2-eco",
+        icon: "Languages"
       }
     ]
   },
+  
+  // 2ème Année - Lettres
   {
-    id: "high-3",
-    name: "3ère année",
+    id: "high-2-lettres",
+    name: "2ème Année",
     level: "high",
-    slug: "3ere-annee",
+    specialization: "Lettres",
+    slug: "2eme-annee-lettres",
     subjects: [
       {
-        id: "arabic-high-3",
-        name: "Arabic",
-        description: "Advanced literary analysis and research",
-        slug: "arabic-high-3",
+        id: "lit-arabe-2",
+        name: "Littérature Arabe",
+        description: "Étude approfondie de la littérature arabe classique et moderne",
+        slug: "lit-arabe-2",
         icon: "BookText"
       },
       {
-        id: "french-high-3",
-        name: "French",
-        description: "Literary research and critical analysis",
-        slug: "french-high-3",
-        icon: "Languages"
-      },
-      {
-        id: "english-high-3",
-        name: "English",
-        description: "Advanced discourse and academic writing",
-        slug: "english-high-3",
-        icon: "Languages"
-      },
-      {
-        id: "math-high-3",
-        name: "Mathematics",
-        description: "Advanced calculus, complex numbers, and probability",
-        slug: "math-high-3",
-        icon: "Calculator"
-      },
-      {
-        id: "biology-high-3",
-        name: "Biology",
-        description: "Molecular biology, biotechnology, and ecology",
-        slug: "biology-high-3",
-        icon: "Leaf"
-      },
-      {
-        id: "physics-high-3",
-        name: "Physics",
-        description: "Quantum mechanics, nuclear physics, and relativity",
-        slug: "physics-high-3",
-        icon: "Atoms"
-      },
-      {
-        id: "chemistry-high-3",
-        name: "Chemistry",
-        description: "Physical chemistry and chemical thermodynamics",
-        slug: "chemistry-high-3",
-        icon: "FlaskConical"
-      },
-      {
-        id: "history-high-3",
-        name: "History & Geography",
-        description: "Contemporary issues in global context",
-        slug: "history-high-3",
-        icon: "Globe"
-      },
-      {
-        id: "philosophy-high-3",
-        name: "Philosophy",
-        description: "Contemporary philosophical debates and critical thinking",
-        slug: "philosophy-high-3",
+        id: "philo-2",
+        name: "Philosophie",
+        description: "Introduction aux concepts philosophiques fondamentaux",
+        slug: "philo-2",
         icon: "BrainCircuit"
+      },
+      {
+        id: "francais-2-lettres",
+        name: "Français",
+        description: "Littérature et expression écrite en français",
+        slug: "francais-2-lettres",
+        icon: "BookOpen"
+      },
+      {
+        id: "anglais-2-lettres",
+        name: "Anglais",
+        description: "Compréhension et expression en langue anglaise",
+        slug: "anglais-2-lettres",
+        icon: "Languages"
+      },
+      {
+        id: "histoire-geo-2",
+        name: "Histoire / Géographie",
+        description: "Histoire mondiale et géographie humaine et physique",
+        slug: "histoire-geo-2",
+        icon: "Globe"
       }
     ]
   },
+  
+  // 2ème Année - Sciences
   {
-    id: "bac",
+    id: "high-2-sciences",
+    name: "2ème Année",
+    level: "high",
+    specialization: "Sciences",
+    slug: "2eme-annee-sciences",
+    subjects: [
+      {
+        id: "math-2-sciences",
+        name: "Mathématiques",
+        description: "Algèbre, géométrie et analyse pour les sciences",
+        slug: "math-2-sciences",
+        icon: "Calculator"
+      },
+      {
+        id: "physique-2",
+        name: "Sciences Physiques",
+        description: "Mécanique, électricité et optique",
+        slug: "physique-2",
+        icon: "Atoms"
+      },
+      {
+        id: "svt-2",
+        name: "Sciences de la Vie et de la Terre",
+        description: "Biologie cellulaire, génétique et géologie",
+        slug: "svt-2",
+        icon: "Leaf"
+      },
+      {
+        id: "info-2-sci",
+        name: "Informatique",
+        description: "Introduction à la programmation et aux systèmes informatiques",
+        slug: "info-2-sci",
+        icon: "Code"
+      },
+      {
+        id: "langues-2-sci",
+        name: "Français / Anglais",
+        description: "Communication scientifique en langues étrangères",
+        slug: "langues-2-sci",
+        icon: "Languages"
+      }
+    ]
+  },
+  
+  // 2ème Année - Technologie de l'Informatique
+  {
+    id: "high-2-info",
+    name: "2ème Année",
+    level: "high",
+    specialization: "Technologie de l'Informatique",
+    slug: "2eme-annee-info",
+    subjects: [
+      {
+        id: "algo-2",
+        name: "Algorithmique",
+        description: "Conception et analyse d'algorithmes",
+        slug: "algo-2",
+        icon: "Code"
+      },
+      {
+        id: "prog-base-2",
+        name: "Programmation (base)",
+        description: "Introduction aux langages de programmation",
+        slug: "prog-base-2",
+        icon: "FileCode"
+      },
+      {
+        id: "reseaux-intro-2",
+        name: "Réseaux (introduction)",
+        description: "Fondamentaux des réseaux informatiques",
+        slug: "reseaux-intro-2",
+        icon: "Network"
+      },
+      {
+        id: "math-2-info",
+        name: "Mathématiques",
+        description: "Mathématiques discrètes et logique",
+        slug: "math-2-info",
+        icon: "Calculator"
+      },
+      {
+        id: "physique-2-info",
+        name: "Sciences Physiques",
+        description: "Électronique et électricité",
+        slug: "physique-2-info",
+        icon: "Zap"
+      },
+      {
+        id: "langues-2-info",
+        name: "Français / Anglais",
+        description: "Communication technique en langues étrangères",
+        slug: "langues-2-info",
+        icon: "Languages"
+      }
+    ]
+  },
+  
+  // 3ème Année - Économie et Gestion
+  {
+    id: "high-3-eco",
+    name: "3ème Année",
+    level: "high",
+    specialization: "Économie et Gestion",
+    slug: "3eme-annee-economie",
+    subjects: [
+      {
+        id: "compta-3",
+        name: "Comptabilité",
+        description: "Principes et techniques comptables",
+        slug: "compta-3",
+        icon: "FileSpreadsheet"
+      },
+      {
+        id: "eco-entreprise-3",
+        name: "Économie d'entreprise",
+        description: "Organisation et fonctionnement des entreprises",
+        slug: "eco-entreprise-3",
+        icon: "Building"
+      },
+      {
+        id: "math-3-eco",
+        name: "Mathématiques",
+        description: "Mathématiques financières et statistiques",
+        slug: "math-3-eco",
+        icon: "Calculator"
+      },
+      {
+        id: "gestion-fin-3",
+        name: "Gestion Financière",
+        description: "Analyse et planification financière",
+        slug: "gestion-fin-3",
+        icon: "Banknote"
+      },
+      {
+        id: "info-appliquee-3",
+        name: "Informatique appliquée",
+        description: "Logiciels de gestion et bases de données",
+        slug: "info-appliquee-3",
+        icon: "Database"
+      }
+    ]
+  },
+  
+  // 3ème Année - Lettres
+  {
+    id: "high-3-lettres",
+    name: "3ème Année",
+    level: "high",
+    specialization: "Lettres",
+    slug: "3eme-annee-lettres",
+    subjects: [
+      {
+        id: "lit-arabe-approf-3",
+        name: "Littérature Arabe approfondie",
+        description: "Analyse littéraire avancée des textes arabes",
+        slug: "lit-arabe-approf-3",
+        icon: "BookText"
+      },
+      {
+        id: "culture-gen-3",
+        name: "Culture Générale",
+        description: "Connaissances interdisciplinaires et actualités",
+        slug: "culture-gen-3",
+        icon: "BookOpen"
+      },
+      {
+        id: "philo-3-lettres",
+        name: "Philosophie",
+        description: "Courants philosophiques et analyse critique",
+        slug: "philo-3-lettres",
+        icon: "BrainCircuit"
+      },
+      {
+        id: "francais-3-lettres",
+        name: "Français",
+        description: "Littérature et dissertation",
+        slug: "francais-3-lettres",
+        icon: "BookOpen"
+      },
+      {
+        id: "anglais-3-lettres",
+        name: "Anglais",
+        description: "Littérature anglophone et expression écrite",
+        slug: "anglais-3-lettres",
+        icon: "Languages"
+      },
+      {
+        id: "histoire-geo-3",
+        name: "Histoire / Géographie",
+        description: "Histoire contemporaine et géopolitique",
+        slug: "histoire-geo-3",
+        icon: "Globe"
+      }
+    ]
+  },
+  
+  // 3ème Année - Sciences
+  {
+    id: "high-3-sciences",
+    name: "3ème Année",
+    level: "high",
+    specialization: "Sciences",
+    slug: "3eme-annee-sciences",
+    subjects: [
+      {
+        id: "math-3-sci",
+        name: "Mathématiques",
+        description: "Analyse, probabilités et géométrie avancée",
+        slug: "math-3-sci",
+        icon: "Calculator"
+      },
+      {
+        id: "physique-3-sci",
+        name: "Sciences Physiques",
+        description: "Mécanique, thermodynamique et électromagnétisme",
+        slug: "physique-3-sci",
+        icon: "Atoms"
+      },
+      {
+        id: "svt-3",
+        name: "SVT",
+        description: "Physiologie, écologie et géologie approfondie",
+        slug: "svt-3",
+        icon: "Leaf"
+      },
+      {
+        id: "langues-3-sci",
+        name: "Français / Anglais",
+        description: "Communication scientifique en langues étrangères",
+        slug: "langues-3-sci",
+        icon: "Languages"
+      },
+      {
+        id: "info-3-sci",
+        name: "Informatique",
+        description: "Programmation et algorithmes pour les sciences",
+        slug: "info-3-sci",
+        icon: "Code"
+      }
+    ]
+  },
+  
+  // 3ème Année - Technologie de l'Informatique
+  {
+    id: "high-3-info",
+    name: "3ème Année",
+    level: "high",
+    specialization: "Technologie de l'Informatique",
+    slug: "3eme-annee-info",
+    subjects: [
+      {
+        id: "algo-avancee-3",
+        name: "Algorithmique avancée",
+        description: "Complexité algorithmique et structures de données",
+        slug: "algo-avancee-3",
+        icon: "Code"
+      },
+      {
+        id: "reseaux-sys-3",
+        name: "Réseaux & Systèmes",
+        description: "Administration réseau et systèmes d'exploitation",
+        slug: "reseaux-sys-3",
+        icon: "Network"
+      },
+      {
+        id: "poo-3",
+        name: "Programmation orientée objet",
+        description: "Conception et développement orientés objet",
+        slug: "poo-3",
+        icon: "FileCode"
+      },
+      {
+        id: "math-3-info",
+        name: "Mathématiques",
+        description: "Mathématiques pour l'informatique",
+        slug: "math-3-info",
+        icon: "Calculator"
+      },
+      {
+        id: "physique-app-3",
+        name: "Physique appliquée",
+        description: "Électronique et signaux",
+        slug: "physique-app-3",
+        icon: "Zap"
+      }
+    ]
+  },
+  
+  // 3ème Année - Mathématiques
+  {
+    id: "high-3-math",
+    name: "3ème Année",
+    level: "high",
+    specialization: "Mathématiques",
+    slug: "3eme-annee-math",
+    subjects: [
+      {
+        id: "math-avancees-3",
+        name: "Mathématiques (Analyse, Algèbre, Statistiques)",
+        description: "Étude approfondie des concepts mathématiques avancés",
+        slug: "math-avancees-3",
+        icon: "Calculator"
+      },
+      {
+        id: "physique-3-math",
+        name: "Physique",
+        description: "Physique théorique et applications mathématiques",
+        slug: "physique-3-math",
+        icon: "Atoms"
+      },
+      {
+        id: "info-3-math",
+        name: "Informatique",
+        description: "Programmation et modélisation mathématique",
+        slug: "info-3-math",
+        icon: "Code"
+      },
+      {
+        id: "langues-3-math",
+        name: "Français / Anglais",
+        description: "Communication scientifique en langues étrangères",
+        slug: "langues-3-math",
+        icon: "Languages"
+      }
+    ]
+  },
+  
+  // Baccalauréat - Économie et Gestion
+  {
+    id: "bac-eco",
     name: "BAC",
     level: "high",
-    slug: "bac",
+    specialization: "Économie et Gestion",
+    slug: "bac-economie",
     subjects: [
       {
-        id: "arabic-bac",
-        name: "Arabic",
-        description: "Final-level Arabic language and literature",
-        slug: "arabic-bac",
-        icon: "BookText"
+        id: "gestion-entreprises-bac",
+        name: "Gestion des Entreprises",
+        description: "Management stratégique et opérationnel",
+        slug: "gestion-entreprises-bac",
+        icon: "Briefcase"
       },
       {
-        id: "french-bac",
-        name: "French",
-        description: "Advanced French linguistics and literature",
-        slug: "french-bac",
-        icon: "Languages"
+        id: "compta-approf-bac",
+        name: "Comptabilité Approfondie",
+        description: "Techniques comptables avancées et normes internationales",
+        slug: "compta-approf-bac",
+        icon: "FileSpreadsheet"
       },
       {
-        id: "english-bac",
-        name: "English",
-        description: "Advanced English language proficiency",
-        slug: "english-bac",
-        icon: "Languages"
+        id: "eco-internationale-bac",
+        name: "Économie Internationale",
+        description: "Commerce international et mondialisation",
+        slug: "eco-internationale-bac",
+        icon: "Globe"
       },
       {
-        id: "math-bac",
-        name: "Mathematics",
-        description: "Comprehensive mathematics for BAC examination",
-        slug: "math-bac",
+        id: "math-app-bac",
+        name: "Mathématiques appliquées",
+        description: "Mathématiques financières et statistiques avancées",
+        slug: "math-app-bac",
         icon: "Calculator"
       },
       {
-        id: "physics-bac",
-        name: "Physics & Chemistry",
-        description: "Final-level physics and chemistry concepts",
-        slug: "physics-bac",
-        icon: "FlaskConical"
+        id: "info-gestion-bac",
+        name: "Informatique de Gestion",
+        description: "Systèmes d'information et logiciels de gestion",
+        slug: "info-gestion-bac",
+        icon: "Database"
+      }
+    ]
+  },
+  
+  // Baccalauréat - Lettres
+  {
+    id: "bac-lettres",
+    name: "BAC",
+    level: "high",
+    specialization: "Lettres",
+    slug: "bac-lettres",
+    subjects: [
+      {
+        id: "lit-arabe-classique-bac",
+        name: "Littérature Arabe classique & moderne",
+        description: "Analyse critique des œuvres littéraires arabes",
+        slug: "lit-arabe-classique-bac",
+        icon: "BookText"
       },
       {
-        id: "biology-bac",
-        name: "Biology",
-        description: "Comprehensive biological sciences for BAC examination",
-        slug: "biology-bac",
-        icon: "Leaf"
-      },
-      {
-        id: "philosophy-bac",
-        name: "Philosophy",
-        description: "Final-level philosophical studies and analysis",
-        slug: "philosophy-bac",
+        id: "philo-approf-bac",
+        name: "Philosophie approfondie",
+        description: "Étude avancée des courants philosophiques",
+        slug: "philo-approf-bac",
         icon: "BrainCircuit"
       },
       {
-        id: "history-bac",
-        name: "History & Geography",
-        description: "Comprehensive historical and geographical studies",
-        slug: "history-bac",
-        icon: "Globe"
+        id: "histoire-contemp-bac",
+        name: "Histoire contemporaine",
+        description: "Histoire du XXe siècle et enjeux actuels",
+        slug: "histoire-contemp-bac",
+        icon: "Clock"
+      },
+      {
+        id: "langues-bac-lettres",
+        name: "Français / Anglais / 3ème langue",
+        description: "Maîtrise avancée des langues étrangères",
+        slug: "langues-bac-lettres",
+        icon: "Languages"
       }
     ]
-  }
-];
+  },
+  
+  // Baccalauréat - Sciences
+  {
+    id: "bac-sciences",
+    name: "BAC",
+    level: "high",
+    specialization: "Sciences",
+    slug: "bac-sciences",
+    subjects: [
+      {
+        id: "bio-avancee-bac",
+        name: "Biologie (SVT) avancée",
+        description: "Biologie moléculaire, génétique et écologie approfondie",
+        slug: "bio-avancee-bac",
+        icon: "Dna"
+      },
+      {
+        id: "chimie-bac",
+        name: "Chimie",
+        description: "Chimie organique, inorganique et analyse chimique",
+        slug: "chimie-bac",
+        icon: "FlaskConical"
+      },
+      {
+        id: "physique-bac-sci",
+        name: "Physique",
+        description: "Mécanique quantique, relativité et physique moderne",
+        slug: "physique-bac-sci",
+        icon: "Atoms"
+      },
+      {
+        id: "math-bac-sci",
+        name: "Mathématiques",
+        description: "Analyse complexe, algèbre linéaire et probabilités",
+        slug: "math-bac-sci",
+        icon: "Calculator"
+      },
+      {
+        id: "info-bac-sci",
+        name: "Informatique",
+        description: "Programmation scientifique et
