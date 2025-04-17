@@ -3,11 +3,13 @@ import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Upload, File, X } from "lucide-react";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { Upload, File, X, Check, AlertCircle } from "lucide-react";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage, FormDescription } from "@/components/ui/form";
 import { useForm } from "react-hook-form";
 import { Card, CardContent } from "@/components/ui/card";
 import { toast } from "@/components/ui/use-toast";
+import { Progress } from "@/components/ui/progress";
+import { Textarea } from "@/components/ui/textarea";
 
 interface FileUploadFormProps {
   onFileUploaded?: (fileInfo: {
@@ -24,6 +26,8 @@ interface FileUploadFormProps {
 const FileUploadForm = ({ onFileUploaded, category = "general", className }: FileUploadFormProps) => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [isUploading, setIsUploading] = useState(false);
+  const [uploadProgress, setUploadProgress] = useState(0);
+  const [dragActive, setDragActive] = useState(false);
 
   const form = useForm({
     defaultValues: {
@@ -43,17 +47,36 @@ const FileUploadForm = ({ onFileUploaded, category = "general", className }: Fil
     const files = e.target.files;
     if (files && files.length > 0) {
       const file = files[0];
-      // Check if file is a PDF
-      if (file.type !== "application/pdf") {
-        toast({
-          title: "Invalid file type",
-          description: "Please upload a PDF file",
-          variant: "destructive",
-        });
-        return;
-      }
-      setSelectedFile(file);
+      validateAndSetFile(file);
     }
+  };
+  
+  const validateAndSetFile = (file: File) => {
+    // Check if file is a PDF
+    if (file.type !== "application/pdf") {
+      toast({
+        title: "Invalid file type",
+        description: "Please upload a PDF file",
+        variant: "destructive",
+      });
+      return;
+    }
+    
+    // Optional: Check file size (limit to 10MB for example)
+    if (file.size > 10 * 1024 * 1024) {
+      toast({
+        title: "File too large",
+        description: "Please upload a file smaller than 10MB",
+        variant: "destructive",
+      });
+      return;
+    }
+    
+    setSelectedFile(file);
+    
+    // Auto-fill the title field with the filename (without extension)
+    const fileName = file.name.replace(/\.[^/.]+$/, "");
+    form.setValue("title", fileName);
   };
 
   const removeFile = () => {
@@ -71,11 +94,34 @@ const FileUploadForm = ({ onFileUploaded, category = "general", className }: Fil
       return;
     }
 
+    if (!category || category === "general") {
+      toast({
+        title: "No category selected",
+        description: "Please select a category for this file",
+        variant: "destructive",
+      });
+      return;
+    }
+
     setIsUploading(true);
+    setUploadProgress(0);
 
     // In a real application, you would upload the file to a server here
-    // For demonstration, we'll simulate an upload delay
+    // For demonstration, we'll simulate an upload with progress
+    const interval = setInterval(() => {
+      setUploadProgress(prev => {
+        if (prev >= 100) {
+          clearInterval(interval);
+          return 100;
+        }
+        return prev + 10;
+      });
+    }, 300);
+
     setTimeout(() => {
+      clearInterval(interval);
+      setUploadProgress(100);
+      
       // Create a local URL (only works for demonstration)
       const fileUrl = URL.createObjectURL(selectedFile);
       
@@ -100,13 +146,36 @@ const FileUploadForm = ({ onFileUploaded, category = "general", className }: Fil
       form.reset();
       setSelectedFile(null);
       setIsUploading(false);
-    }, 1500);
+      setUploadProgress(0);
+    }, 3000);
   });
+
+  // Handle drag events
+  const handleDrag = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (e.type === "dragenter" || e.type === "dragover") {
+      setDragActive(true);
+    } else if (e.type === "dragleave") {
+      setDragActive(false);
+    }
+  };
+  
+  // Handle drop event
+  const handleDrop = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setDragActive(false);
+    
+    if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+      validateAndSetFile(e.dataTransfer.files[0]);
+    }
+  };
 
   return (
     <div className={className}>
       <Form {...form}>
-        <form onSubmit={onSubmit} className="space-y-4">
+        <form onSubmit={onSubmit} className="space-y-5">
           <FormField
             control={form.control}
             name="title"
@@ -114,8 +183,15 @@ const FileUploadForm = ({ onFileUploaded, category = "general", className }: Fil
               <FormItem>
                 <FormLabel>Document Title</FormLabel>
                 <FormControl>
-                  <Input placeholder="Enter document title" {...field} />
+                  <Input 
+                    placeholder="Enter a title for the document" 
+                    {...field} 
+                    className="bg-white/80 dark:bg-gray-800/80"
+                  />
                 </FormControl>
+                <FormDescription>
+                  This will be displayed to users browsing the exams
+                </FormDescription>
                 <FormMessage />
               </FormItem>
             )}
@@ -126,10 +202,18 @@ const FileUploadForm = ({ onFileUploaded, category = "general", className }: Fil
             name="description"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Description (optional)</FormLabel>
+                <FormLabel>Description</FormLabel>
                 <FormControl>
-                  <Input placeholder="Enter a brief description" {...field} />
+                  <Textarea 
+                    placeholder="Enter a brief description of this document" 
+                    {...field}
+                    className="resize-none bg-white/80 dark:bg-gray-800/80"
+                    rows={3}
+                  />
                 </FormControl>
+                <FormDescription>
+                  Helpful details like exam topics, grade level, or important information
+                </FormDescription>
                 <FormMessage />
               </FormItem>
             )}
@@ -144,10 +228,23 @@ const FileUploadForm = ({ onFileUploaded, category = "general", className }: Fil
                 <FormControl>
                   <div className="flex flex-col gap-2">
                     {!selectedFile ? (
-                      <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center cursor-pointer hover:border-education-primary transition-colors"
-                        onClick={() => document.getElementById("file-upload")?.click()}>
-                        <Upload className="h-10 w-10 text-gray-400 mx-auto mb-2" />
-                        <p className="text-sm text-gray-500">Click to select or drop a PDF file</p>
+                      <div 
+                        className={`border-2 border-dashed rounded-lg p-8 text-center cursor-pointer transition-colors ${
+                          dragActive 
+                            ? "border-blue-500 bg-blue-50 dark:bg-blue-900/20" 
+                            : "border-gray-300 hover:border-blue-500 dark:border-gray-600 dark:hover:border-blue-400"
+                        }`}
+                        onClick={() => document.getElementById("file-upload")?.click()}
+                        onDragEnter={handleDrag}
+                        onDragLeave={handleDrag}
+                        onDragOver={handleDrag}
+                        onDrop={handleDrop}
+                      >
+                        <Upload className={`h-12 w-12 mx-auto mb-4 ${dragActive ? "text-blue-500" : "text-gray-400"}`} />
+                        <p className="text-sm text-gray-600 dark:text-gray-300 mb-1">
+                          <span className="font-medium">Click to upload</span> or drag and drop
+                        </p>
+                        <p className="text-xs text-gray-500 dark:text-gray-400">PDF files only (Max 10MB)</p>
                         <Input
                           id="file-upload"
                           type="file"
@@ -157,13 +254,20 @@ const FileUploadForm = ({ onFileUploaded, category = "general", className }: Fil
                         />
                       </div>
                     ) : (
-                      <Card>
+                      <Card className="border border-green-200 dark:border-green-900">
                         <CardContent className="p-4 flex items-center justify-between">
                           <div className="flex items-center gap-3">
-                            <File className="h-8 w-8 text-education-primary" />
+                            <div className="p-2 bg-green-100 dark:bg-green-900/30 rounded-full">
+                              <File className="h-6 w-6 text-green-600 dark:text-green-400" />
+                            </div>
                             <div>
-                              <p className="font-medium">{selectedFile.name}</p>
-                              <p className="text-xs text-gray-500">{formatFileSize(selectedFile.size)}</p>
+                              <p className="font-medium text-green-800 dark:text-green-300">{selectedFile.name}</p>
+                              <div className="flex items-center gap-2">
+                                <span className="text-xs text-gray-500 dark:text-gray-400">{formatFileSize(selectedFile.size)}</span>
+                                <span className="flex items-center text-xs text-green-600 dark:text-green-400">
+                                  <Check className="h-3 w-3 mr-1" /> Ready to upload
+                                </span>
+                              </div>
                             </div>
                           </div>
                           <Button 
@@ -171,6 +275,7 @@ const FileUploadForm = ({ onFileUploaded, category = "general", className }: Fil
                             size="icon"
                             type="button"
                             onClick={removeFile}
+                            className="text-gray-500 hover:text-red-500 dark:text-gray-400 dark:hover:text-red-400"
                           >
                             <X className="h-4 w-4" />
                           </Button>
@@ -184,6 +289,23 @@ const FileUploadForm = ({ onFileUploaded, category = "general", className }: Fil
             )}
           />
 
+          {isUploading && (
+            <div className="space-y-2">
+              <div className="flex justify-between text-xs text-gray-500 dark:text-gray-400">
+                <span>Uploading...</span>
+                <span>{uploadProgress}%</span>
+              </div>
+              <Progress value={uploadProgress} className="h-2" />
+            </div>
+          )}
+
+          <div className="flex items-center gap-2 pt-2">
+            <AlertCircle className="h-4 w-4 text-amber-500" />
+            <p className="text-xs text-gray-600 dark:text-gray-400">
+              Make sure you've selected a category before uploading
+            </p>
+          </div>
+
           <Button 
             type="submit" 
             className="w-full bg-education-primary hover:bg-education-primary-dark"
@@ -191,12 +313,13 @@ const FileUploadForm = ({ onFileUploaded, category = "general", className }: Fil
           >
             {isUploading ? (
               <>
-                <span className="animate-pulse mr-2">Uploading...</span>
+                <span className="mr-2">Uploading...</span>
+                <span className="text-xs">{uploadProgress}%</span>
               </>
             ) : (
               <>
                 <Upload className="mr-2 h-4 w-4" />
-                Upload Document
+                Upload PDF Document
               </>
             )}
           </Button>

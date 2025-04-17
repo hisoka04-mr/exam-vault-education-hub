@@ -1,10 +1,11 @@
 
-import { Download, FileText } from "lucide-react";
+import { Download, FileText, Eye } from "lucide-react";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Exam } from "@/data/exams";
 import { useState } from "react";
 import { toast } from "@/components/ui/use-toast";
+import { Badge } from "@/components/ui/badge";
 
 interface ExamCardProps {
   exam: Exam;
@@ -87,33 +88,43 @@ const ExamCard = ({ exam }: ExamCardProps) => {
   };
 
   return (
-    <Card className="bg-gray-50 border border-gray-200">
-      <CardContent className="p-3">
-        <div className="flex items-start gap-2">
-          <FileText className="h-5 w-5 text-education-primary mt-1 flex-shrink-0" />
-          <div>
-            <h4 className="font-medium text-sm">{exam.title}</h4>
-            <div className="flex justify-between items-center mt-2 text-xs text-gray-500">
-              <span>{exam.fileType} • {exam.fileSize}</span>
-              <span>{new Date(exam.dateAdded).toLocaleDateString()}</span>
+    <Card className="overflow-hidden transition-all duration-300 hover:shadow-md bg-white/80 dark:bg-gray-800/60 border-gray-200 dark:border-gray-700">
+      <CardContent className="p-4">
+        <div className="flex items-start gap-3">
+          <div className="p-2 rounded-md bg-blue-100 dark:bg-blue-900/30 flex-shrink-0 mt-1">
+            <FileText className="h-5 w-5 text-education-primary dark:text-blue-400" />
+          </div>
+          <div className="flex-1 min-w-0">
+            <h4 className="font-medium text-sm mb-1 truncate">{exam.title}</h4>
+            <p className="text-xs text-gray-600 dark:text-gray-400 line-clamp-2 mb-2">{exam.description}</p>
+            <div className="flex flex-wrap items-center gap-2">
+              <Badge variant="outline" className="text-xs bg-gray-50 dark:bg-gray-700 py-0 px-1">
+                {exam.fileType}
+              </Badge>
+              <Badge variant="outline" className="text-xs bg-gray-50 dark:bg-gray-700 py-0 px-1">
+                {exam.fileSize}
+              </Badge>
+              <span className="text-xs text-gray-500 dark:text-gray-400">
+                {new Date(exam.dateAdded).toLocaleDateString()}
+              </span>
             </div>
           </div>
         </div>
       </CardContent>
-      <CardFooter className="p-2 pt-0 flex gap-2">
+      <CardFooter className="p-3 pt-0 flex gap-2 bg-gray-50/50 dark:bg-gray-800/80">
         <Button 
           className="flex-1" 
           size="sm" 
           variant="outline"
           onClick={handlePreview}
         >
-          <FileText size={14} className="mr-2" /> 
+          <Eye size={14} className="mr-2" /> 
           Preview
         </Button>
         <Button 
           className="flex-1" 
           size="sm" 
-          variant="outline"
+          variant="default"
           onClick={handleDownload}
           disabled={isDownloading}
         >
