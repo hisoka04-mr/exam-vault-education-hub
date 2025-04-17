@@ -18,6 +18,8 @@ interface FileUploadFormProps {
     type: string;
     url: string;
     dateAdded: string;
+    file: File;
+    description: string;
   }) => void;
   category?: string;
   className?: string;
@@ -62,7 +64,7 @@ const FileUploadForm = ({ onFileUploaded, category = "general", className }: Fil
       return;
     }
     
-    // Optional: Check file size (limit to 10MB for example)
+    // Check file size (limit to 10MB)
     if (file.size > 10 * 1024 * 1024) {
       toast({
         title: "File too large",
@@ -106,48 +108,42 @@ const FileUploadForm = ({ onFileUploaded, category = "general", className }: Fil
     setIsUploading(true);
     setUploadProgress(0);
 
-    // In a real application, you would upload the file to a server here
-    // For demonstration, we'll simulate an upload with progress
+    // Simulate upload progress
     const interval = setInterval(() => {
       setUploadProgress(prev => {
-        if (prev >= 100) {
+        if (prev >= 90) {
           clearInterval(interval);
-          return 100;
+          return 90;
         }
         return prev + 10;
       });
     }, 300);
 
+    // With Supabase, we'll let the examService handle the actual upload
     setTimeout(() => {
       clearInterval(interval);
       setUploadProgress(100);
-      
-      // Create a local URL (only works for demonstration)
-      const fileUrl = URL.createObjectURL(selectedFile);
       
       const fileInfo = {
         name: data.title || selectedFile.name,
         size: formatFileSize(selectedFile.size),
         type: "PDF",
-        url: fileUrl,
+        url: URL.createObjectURL(selectedFile), // This is just for preview, Supabase will handle storage
         dateAdded: new Date().toISOString().split("T")[0],
+        file: selectedFile,
+        description: data.description
       };
 
       if (onFileUploaded) {
         onFileUploaded(fileInfo);
       }
 
-      toast({
-        title: "File uploaded successfully",
-        description: `${selectedFile.name} has been uploaded.`,
-      });
-
-      // Reset the form
+      // Reset the form after successful upload
       form.reset();
       setSelectedFile(null);
       setIsUploading(false);
       setUploadProgress(0);
-    }, 3000);
+    }, 1000);
   });
 
   // Handle drag events
@@ -292,7 +288,7 @@ const FileUploadForm = ({ onFileUploaded, category = "general", className }: Fil
           {isUploading && (
             <div className="space-y-2">
               <div className="flex justify-between text-xs text-gray-500 dark:text-gray-400">
-                <span>Uploading...</span>
+                <span>Uploading to Supabase Storage...</span>
                 <span>{uploadProgress}%</span>
               </div>
               <Progress value={uploadProgress} className="h-2" />
