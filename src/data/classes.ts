@@ -1039,4 +1039,4 @@ export const classes: SchoolClass[] = [
       {
         id: "info-bac-sci",
         name: "Informatique",
-        description: "Programmation scientifique et
+        description: "Programmation
