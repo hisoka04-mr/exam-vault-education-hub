@@ -9,30 +9,44 @@ import { Badge } from "@/components/ui/badge";
 import { classes } from "@/data/classes";
 import { useLanguage } from "@/contexts/LanguageContext";
 import * as LucideIcons from "lucide-react";
-import { GraduationCap, School, BookOpen } from "lucide-react";
+import { GraduationCap, School, BookOpen, Bookmark } from "lucide-react";
 
 const ClassList = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const { t } = useLanguage();
   
+  // Group classes by level
   const primaryClasses = classes.filter(c => c.level === "primary");
   const middleClasses = classes.filter(c => c.level === "middle");
-  const highClasses = classes.filter(c => c.level === "high");
+  
+  // Group high school classes by year
+  const firstYearClasses = classes.filter(c => c.level === "high" && c.name.includes("1ère"));
+  const secondYearClasses = classes.filter(c => c.level === "high" && c.name.includes("2ème"));
+  const thirdYearClasses = classes.filter(c => c.level === "high" && c.name.includes("3ème"));
+  const bacClasses = classes.filter(c => c.level === "high" && c.name.includes("BAC"));
 
-  const filteredPrimaryClasses = primaryClasses.filter(c => 
-    c.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    (c.specialization && c.specialization.toLowerCase().includes(searchTerm.toLowerCase()))
-  );
-  
-  const filteredMiddleClasses = middleClasses.filter(c => 
-    c.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    (c.specialization && c.specialization.toLowerCase().includes(searchTerm.toLowerCase()))
-  );
-  
-  const filteredHighClasses = highClasses.filter(c => 
-    c.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    (c.specialization && c.specialization.toLowerCase().includes(searchTerm.toLowerCase()))
-  );
+  // Filter classes by search term
+  const filterClasses = (classArray) => {
+    return classArray.filter(c => 
+      c.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      (c.specialization && c.specialization.toLowerCase().includes(searchTerm.toLowerCase()))
+    );
+  };
+
+  const filteredPrimaryClasses = filterClasses(primaryClasses);
+  const filteredMiddleClasses = filterClasses(middleClasses);
+  const filteredFirstYearClasses = filterClasses(firstYearClasses);
+  const filteredSecondYearClasses = filterClasses(secondYearClasses);
+  const filteredThirdYearClasses = filterClasses(thirdYearClasses);
+  const filteredBacClasses = filterClasses(bacClasses);
+
+  // Combined high school classes
+  const filteredHighClasses = [
+    ...filteredFirstYearClasses,
+    ...filteredSecondYearClasses,
+    ...filteredThirdYearClasses, 
+    ...filteredBacClasses
+  ];
 
   const renderClassCard = (schoolClass) => (
     <Link to={`/classes/${schoolClass.slug}`} key={schoolClass.id}>
@@ -56,6 +70,59 @@ const ClassList = () => {
       </Card>
     </Link>
   );
+  
+  // Group classes by year for high school tab
+  const renderHighSchoolContent = () => {
+    if (filteredHighClasses.length === 0) {
+      return (
+        <div className="text-center py-8">
+          <p className="text-gray-500">{t("noClassesFound") || "No classes found"}</p>
+        </div>
+      );
+    }
+    
+    // Create groups
+    const yearGroups = [
+      { 
+        title: "1ère Année", 
+        classes: filteredFirstYearClasses,
+        icon: <Bookmark className="h-5 w-5 text-blue-400" />
+      },
+      { 
+        title: "2ème Année", 
+        classes: filteredSecondYearClasses,
+        icon: <Bookmark className="h-5 w-5 text-green-400" />
+      },
+      { 
+        title: "3ème Année", 
+        classes: filteredThirdYearClasses,
+        icon: <Bookmark className="h-5 w-5 text-yellow-400" />
+      },
+      { 
+        title: "Baccalauréat", 
+        classes: filteredBacClasses,
+        icon: <Bookmark className="h-5 w-5 text-red-400" />
+      }
+    ];
+    
+    return (
+      <div className="space-y-8">
+        {yearGroups.map(group => (
+          group.classes.length > 0 && (
+            <div key={group.title}>
+              <div className="flex items-center mb-4">
+                {group.icon}
+                <h3 className="text-xl font-bold ml-2">{group.title}</h3>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {group.classes.map(renderClassCard)}
+              </div>
+            </div>
+          )
+        ))}
+      </div>
+    );
+  };
 
   return (
     <div className="w-full">
@@ -113,15 +180,7 @@ const ClassList = () => {
         </TabsContent>
 
         <TabsContent value="high">
-          {filteredHighClasses.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {filteredHighClasses.map(renderClassCard)}
-            </div>
-          ) : (
-            <div className="text-center py-8">
-              <p className="text-gray-500">{t("noClassesFound") || "No classes found"}</p>
-            </div>
-          )}
+          {renderHighSchoolContent()}
         </TabsContent>
       </Tabs>
     </div>
