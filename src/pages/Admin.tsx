@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
@@ -47,8 +46,6 @@ const Admin = () => {
       dateAdded: fileInfo.dateAdded,
     };
 
-    // In a real application, you would save this to a database
-    // For demonstration, we'll just add it to state
     setUploadedExams(prev => [...prev, newExam]);
     
     toast({
@@ -56,11 +53,9 @@ const Admin = () => {
       description: `${fileInfo.name} has been added to ${getCategoryOrClassName(selectedCategory)}`,
     });
     
-    // Switch to manage tab after successful upload
     setSelectedTab("manage");
   };
-  
-  // Helper function to get category or class name from ID
+
   const getCategoryOrClassName = (id: string) => {
     const category = categories.find(cat => cat.id === id);
     if (category) return category.name;
@@ -70,8 +65,7 @@ const Admin = () => {
     
     return id;
   };
-  
-  // Get the category name for display
+
   const getCategoryName = (categoryId: string) => {
     const category = categories.find(cat => cat.id === categoryId);
     if (category) return category.name;
@@ -81,8 +75,7 @@ const Admin = () => {
     
     return "Unknown Category";
   };
-  
-  // Count all existing exams
+
   const existingExamsCount = exams.length;
 
   return (
@@ -221,7 +214,7 @@ const Admin = () => {
                               <span>•</span> 
                               <span>{exam.fileSize}</span>
                               <span>•</span>
-                              <Badge variant="outline" size="sm" className="bg-blue-50 text-xs text-blue-600 dark:bg-blue-900/20 dark:text-blue-300">
+                              <Badge variant="outline" className="bg-blue-50 text-xs text-blue-600 dark:bg-blue-900/20 dark:text-blue-300">
                                 {getCategoryName(exam.categoryId)}
                               </Badge> 
                             </div>
@@ -262,7 +255,7 @@ const Admin = () => {
                       </div>
                       <p className="text-sm text-gray-600 dark:text-gray-300 mb-2 line-clamp-2">{exam.description}</p>
                       <div className="flex items-center justify-between mt-2">
-                        <Badge variant="outline" size="sm" className="bg-blue-50 text-blue-600 dark:bg-blue-900/20 dark:text-blue-300">
+                        <Badge variant="outline" className="bg-blue-50 text-blue-600 dark:bg-blue-900/20 dark:text-blue-300">
                           {getCategoryName(exam.categoryId)}
                         </Badge>
                         <p className="text-xs text-gray-500 dark:text-gray-400">{exam.dateAdded}</p>
