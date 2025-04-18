@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
@@ -17,8 +16,13 @@ const Navbar = () => {
           <div className="flex">
             <div className="flex-shrink-0 flex items-center">
               <Link to="/" className="flex items-center">
+                <img 
+                  src="/lovable-uploads/38ae8cdb-40f8-40d0-bf10-63d923102205.png"
+                  alt="الشامل في التعليم"
+                  className="h-10 w-10 rounded-full mr-2"
+                />
                 <span className="text-education-primary text-xl font-bold">
-                  {language === 'arabic' ? 'الشامل في التعليم' : 'Education'}
+                  الشامل في التعليم
                 </span>
               </Link>
             </div>
