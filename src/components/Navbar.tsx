@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
@@ -22,7 +23,7 @@ const Navbar = () => {
                   className="h-10 w-10 rounded-full mr-2"
                 />
                 <span className="text-education-primary text-xl font-bold">
-                  الشامل في التعليم
+                  {language === 'english' ? 'Education' : 'الشامل في التعليم'}
                 </span>
               </Link>
             </div>

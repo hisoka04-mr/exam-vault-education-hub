@@ -1,3 +1,4 @@
+
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
 type Language = 'english' | 'arabic' | 'french';
@@ -13,6 +14,7 @@ const translations = {
   english: {
     home: 'Home',
     categories: 'Categories',
+    classes: 'Classes',
     search: 'Search',
     searchPlaceholder: 'Search for exams, tests, and materials...',
     signIn: 'Sign In',
@@ -29,10 +31,13 @@ const translations = {
     communityDrivenDesc: 'Join thousands of educators and students sharing and collaborating on educational content.',
     heroTitle: 'Educational Resources for Everyone',
     heroDescription: 'Access thousands of free exams, tests, and educational materials to enhance your teaching or accelerate your learning.',
+    schoolClasses: 'School Classes',
+    classesDescription: 'Browse our collection of educational resources organized by school year. Select a class to see all available subjects.'
   },
   arabic: {
     home: 'الرئيسية',
     categories: 'الفئات',
+    classes: 'الصفوف الدراسية',
     search: 'بحث',
     searchPlaceholder: 'ابحث عن الاختبارات والامتحانات والمواد التعليمية...',
     signIn: 'تسجيل الدخول',
@@ -49,6 +54,8 @@ const translations = {
     communityDrivenDesc: 'انضم إلى آلاف المعلمين والطلاب الذين يشاركون ويتعاونون في المحتوى التعليمي.',
     heroTitle: 'موارد تعليمية للجميع',
     heroDescription: 'الوصول إلى آلاف الاختبارات والامتحانات والمواد التعليمية المجانية لتعزيز التدريس أو تسريع التعلم.',
+    schoolClasses: 'الصفوف الدراسية',
+    classesDescription: 'تصفح مجموعتنا من الموارد التعليمية المنظمة حسب السنة الدراسية. اختر صفًا لمشاهدة جميع المواد المتاحة.'
   },
   french: {
     home: 'Accueil',
@@ -75,7 +82,7 @@ const translations = {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
-  const [language, setLanguage] = useState<Language>('arabic');
+  const [language, setLanguage] = useState<Language>('english');
 
   const t = (key: string): string => {
     return translations[language][key] || key;
