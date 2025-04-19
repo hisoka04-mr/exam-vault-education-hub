@@ -1044,5 +1044,97 @@ export const classes: SchoolClass[] = [
         icon: "Code"
       }
     ]
+  },
+  
+  // Baccalauréat - Technologie de l'Informatique
+  {
+    id: "bac-info",
+    name: "BAC",
+    level: "high",
+    specialization: "Technologie de l'Informatique",
+    slug: "bac-info",
+    subjects: [
+      {
+        id: "dev-web-bac-info",
+        name: "Développement Web",
+        description: "Développement web avancé (frontend, backend, frameworks modernes)",
+        slug: "dev-web-bac-info",
+        icon: "Code"
+      },
+      {
+        id: "reseaux-systemes-bac-info",
+        name: "Réseaux et Systèmes",
+        description: "Architectures réseau, sécurité et administration système",
+        slug: "reseaux-systemes-bac-info",
+        icon: "Network"
+      },
+      {
+        id: "cybersecurite-bac-info",
+        name: "Cybersécurité",
+        description: "Principes de sécurité informatique, cryptographie et protection des données",
+        slug: "cybersecurite-bac-info",
+        icon: "Shield"
+      },
+      {
+        id: "intelligence-artificielle-bac-info",
+        name: "Intelligence Artificielle",
+        description: "Introduction aux algorithmes d'IA, machine learning et data science",
+        slug: "intelligence-artificielle-bac-info",
+        icon: "Brain"
+      },
+      {
+        id: "langues-bac-info",
+        name: "Français / Anglais",
+        description: "Communication technique et professionnelle en langues étrangères",
+        slug: "langues-bac-info",
+        icon: "Languages"
+      }
+    ]
+  },
+  
+  // Baccalauréat - Mathématiques
+  {
+    id: "bac-math",
+    name: "BAC",
+    level: "high",
+    specialization: "Mathématiques",
+    slug: "bac-mathematiques",
+    subjects: [
+      {
+        id: "analyse-mathematique-bac",
+        name: "Analyse Mathématique",
+        description: "Étude approfondie des fonctions, limites, dérivées et intégrales",
+        slug: "analyse-mathematique-bac",
+        icon: "Calculator"
+      },
+      {
+        id: "algebre-lineaire-bac",
+        name: "Algèbre Linéaire",
+        description: "Espaces vectoriels, transformations linéaires, matrices",
+        slug: "algebre-lineaire-bac",
+        icon: "PanelsTopLeft"
+      },
+      {
+        id: "probabilites-statistiques-bac",
+        name: "Probabilités et Statistiques",
+        description: "Théorie des probabilités, inférence statistique et analyse de données",
+        slug: "probabilites-statistiques-bac",
+        icon: "BarChart"
+      },
+      {
+        id: "geometrie-mathematique-bac",
+        name: "Géométrie",
+        description: "Géométrie analytique, topologie et systèmes de coordonnées",
+        slug: "geometrie-mathematique-bac",
+        icon: "Shapes"
+      },
+      {
+        id: "mathematiques-appliquees-bac",
+        name: "Mathématiques Appliquées",
+        description: "Applications des mathématiques en physique, économie et sciences",
+        slug: "mathematiques-appliquees-bac",
+        icon: "Atom"
+      }
+    ]
   }
 ];
